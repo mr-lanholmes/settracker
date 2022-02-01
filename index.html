@@ -74,7 +74,7 @@
                 this.excercises[idx].count += addValue
                 if(this.excercises[idx].count <= 0){
                     this.excercises[idx].count = 0
-                    this.excercises.exerciseLog.push({
+                    this.excercises[idx].exerciseLog.push({
                         name: 'Add New Set',
                         status: 'Failed',
                         reason: 'Reached 0', 
@@ -82,7 +82,7 @@
                         dateTime: new Date(),
                     });
                 }else{
-                    this.excercises.exerciseLog.push({
+                    this.excercises[idx].exerciseLog.push({
                         name: 'Add New Set',
                         status: 'Success',
                         reason: '', 
@@ -95,7 +95,7 @@
 
             resetSet: function(idx) {
                 this.excercises[idx].count = 0
-                this.excercises.exerciseLog.push({
+                this.excercises[idx].exerciseLog.push({
                     name: 'Reset Set',
                     status: 'Success',
                     reason: '', 
@@ -107,7 +107,7 @@
 
             deleteSet: function(idx) {
                 this.excercises.splice(idx, 1);
-                this.excercises.exerciseLog.push({
+                this.excercises[idx].exerciseLog.push({
                     name: 'Delete Set',
                     status: 'Success',
                     reason: '', 
