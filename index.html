@@ -49,6 +49,7 @@
         },
         methods: { 
             saveSession: function() {
+                // console.log(this.excercises)
                 localStorage.setItem('_previousSession', JSON.stringify(this.excercises));
             }, 
 
@@ -107,13 +108,6 @@
 
             deleteSet: function(idx) {
                 this.excercises.splice(idx, 1);
-                this.excercises[idx].exerciseLog.push({
-                    name: 'Delete Set',
-                    status: 'Success',
-                    reason: '', 
-                    amount: 0,
-                    dateTime: new Date(),
-                });
                 this.saveSession();
             },
         }
