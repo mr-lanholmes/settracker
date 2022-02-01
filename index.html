@@ -56,7 +56,16 @@
                 this.excercises.push({
                     name: "",
                     initialExercise: "Exercise Name here",
-                    count: 0
+                    count: 0,
+                    exerciseLog: [ 
+                        {
+                            name: 'Add New Excercise',
+                            status: 'Success',
+                            reason: '', 
+                            amount: 0,
+                            dateTime: new Date(),
+                        }
+                    ],
                 });
                 this.saveSession();
             }, 
@@ -65,17 +74,46 @@
                 this.excercises[idx].count += addValue
                 if(this.excercises[idx].count <= 0){
                     this.excercises[idx].count = 0
+                    this.excercises.exerciseLog.push({
+                        name: 'Add New Set',
+                        status: 'Failed',
+                        reason: 'Reached 0', 
+                        amount: 1,
+                        dateTime: new Date(),
+                    });
+                }else{
+                    this.excercises.exerciseLog.push({
+                        name: 'Add New Set',
+                        status: 'Success',
+                        reason: '', 
+                        amount: 1,
+                        dateTime: new Date(),
+                    });
                 }
                 this.saveSession();
             },
 
             resetSet: function(idx) {
                 this.excercises[idx].count = 0
+                this.excercises.exerciseLog.push({
+                    name: 'Reset Set',
+                    status: 'Success',
+                    reason: '', 
+                    amount: 0,
+                    dateTime: new Date(),
+                });
                 this.saveSession();
             },
 
             deleteSet: function(idx) {
-                this.arr.splice(idx, 1);
+                this.excercises.splice(idx, 1);
+                this.excercises.exerciseLog.push({
+                    name: 'Delete Set',
+                    status: 'Success',
+                    reason: '', 
+                    amount: 0,
+                    dateTime: new Date(),
+                });
                 this.saveSession();
             },
         }
